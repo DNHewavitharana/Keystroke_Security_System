@@ -45,7 +45,7 @@ public class Login extends javax.swing.JFrame {
         message = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setBounds(new java.awt.Rectangle(500, 250, 0, 0));
+        setBounds(new java.awt.Rectangle(400, 200, 0, 0));
 
         text1.setColumns(20);
         text1.setLineWrap(true);
@@ -147,11 +147,23 @@ public class Login extends javax.swing.JFrame {
             Security_System.setter(user_name);
             if (text2.getText().contentEquals(text1.getText())){
                 System.out.println(true);
-                x=text2.getText().length();
-                Security_System.calculate(x,"login");
+                boolean value=Security_System.calculate("login");
+                if (value==true){
+                    new Result("Login successfully").setVisible(true);
+                }
+                else { 
+                    new Result("Login Failed").setVisible(true);
+                }
+                text2.setText("");
+                component = new Security_System();
+                name.requestFocusInWindow();
+                component.declare();
             }else{
-                //new Result().setVisible(true);
-                //JOptionPane.showMessageDialog(null, "ERROR", "InfoBox: " + "ERROR", JOptionPane.ERROR_MESSAGE);
+                new Result("Incorrect, Please try again").setVisible(true);
+                text2.setText("");
+                component = new Security_System();
+                name.requestFocusInWindow();
+                component.declare();
             }
         }else{
             message.setVisible(true);

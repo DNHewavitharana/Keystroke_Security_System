@@ -5,7 +5,7 @@
     <Property name="defaultCloseOperation" type="int" value="2"/>
     <Property name="alwaysOnTop" type="boolean" value="true"/>
     <Property name="bounds" type="java.awt.Rectangle" editor="org.netbeans.beaninfo.editors.RectangleEditor">
-      <Rectangle value="[500, 250, 0, 0]"/>
+      <Rectangle value="[450, 200, 0, 0]"/>
     </Property>
   </Properties>
   <SyntheticProperties>
@@ -141,7 +141,7 @@
             <Property name="columns" type="int" value="20"/>
             <Property name="lineWrap" type="boolean" value="true"/>
             <Property name="rows" type="int" value="5"/>
-            <Property name="text" type="java.lang.String" value="This."/>
+            <Property name="text" type="java.lang.String" value="This is a security system for all users."/>
             <Property name="enabled" type="boolean" value="false"/>
             <Property name="name" type="java.lang.String" value="text1" noResource="true"/>
           </Properties>

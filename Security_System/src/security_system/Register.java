@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package security_system;
-import javax.swing.JOptionPane;
+import java.awt.Component;
+import javax.swing.*;
 
 /**
  *
@@ -49,7 +50,7 @@ public class Register extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
-        setBounds(new java.awt.Rectangle(500, 250, 0, 0));
+        setBounds(new java.awt.Rectangle(450, 200, 0, 0));
 
         jButton1.setText("Reset");
         jButton1.setName(""); // NOI18N
@@ -86,7 +87,7 @@ public class Register extends javax.swing.JFrame {
         text1.setColumns(20);
         text1.setLineWrap(true);
         text1.setRows(5);
-        text1.setText("This.");
+        text1.setText("This is a security system for all users.");
         text1.setEnabled(false);
         text1.setName("text1"); // NOI18N
         jScrollPane3.setViewportView(text1);
@@ -157,24 +158,38 @@ public class Register extends javax.swing.JFrame {
         if (!(name.getText().isEmpty())){ 
             message.setVisible(false);
             user_name=name.getText();
-            Security_System.setter(user_name);
-            if (text2.getText().contentEquals(text1.getText())){
-                System.out.println(true);
-                x=text1.getText().length();
-                boolean value=Security_System.calculate(x,"register");
+            if (Security_System.checker(user_name)){
+                Security_System.setter(user_name);
+                if (text2.getText().contentEquals(text1.getText())){                
+                    boolean value=Security_System.calculate("register");
+                    new Result("Registed Sccessfully").setVisible(true);
+                    text2.setText("");
+                    name.setText("");
+                    name.requestFocusInWindow();
+                    component = new Security_System();
+                    component.declare();
+                
+                }else{
+                    new Result("Incorrect, Please try again").setVisible(true);
+                    text2.setText("");
+                    component = new Security_System();
+                    text2.requestFocusInWindow();
+                    component.declare();        
+                }
             }else{
-                //new Result().setVisible(true);
-                //JOptionPane.showMessageDialog(null, "ERROR", "InfoBox: " + "ERROR", JOptionPane.ERROR_MESSAGE);
+                new Result("User Name not available").setVisible(true);
+                name.setText("");
+                name.requestFocusInWindow();     
             }
         }else{
-            message.setVisible(true);
-        }
+                message.setVisible(true);
+            }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         text2.setText("");
         name.setText("");
-        text2.requestFocusInWindow();
+        name.requestFocusInWindow();
         component = new Security_System();
         component.declare();
     }//GEN-LAST:event_jButton1ActionPerformed
