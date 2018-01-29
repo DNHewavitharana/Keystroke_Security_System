@@ -83,6 +83,8 @@ public class Register extends javax.swing.JFrame {
         jLabel1.setText("Register Form");
 
         text1.setColumns(20);
+        text1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        text1.setForeground(new java.awt.Color(0, 0, 0));
         text1.setLineWrap(true);
         text1.setRows(5);
         text1.setText("This is a security system for all users.");
@@ -156,16 +158,24 @@ public class Register extends javax.swing.JFrame {
         if (!(name.getText().isEmpty())){ 
             message.setVisible(false);
             user_name=name.getText();
-            if (Security_System.checker(user_name)){
-                Security_System.setter(user_name);
+            Security_System.setter(user_name);
                 if (text2.getText().contentEquals(text1.getText())){                
                     boolean value=Security_System.calculate("register");
-                    new Result("Registed Sccessfully").setVisible(true);
-                    text2.setText("");
-                    name.setText("");
-                    name.requestFocusInWindow();
-                    component = new Security_System();
-                    component.declare();
+                    if (value==true){
+                        new Result("Registed Successfully").setVisible(true);
+                        text2.setText("");
+                        name.setText("");
+                        name.requestFocusInWindow();
+                        component = new Security_System();
+                        component.declare();
+                    }else{
+                        new Result("User Name not available").setVisible(true);
+                        name.setText("");
+                        name.requestFocusInWindow();
+                        component = new Security_System();
+                        component.declare();
+                        text2.setText("");
+                    }
                 
                 }else{
                     new Result("Incorrect, Please try again").setVisible(true);
@@ -174,11 +184,6 @@ public class Register extends javax.swing.JFrame {
                     text2.requestFocusInWindow();
                     component.declare();        
                 }
-            }else{
-                new Result("User Name not available").setVisible(true);
-                name.setText("");
-                name.requestFocusInWindow();     
-            }
         }else{
                 message.setVisible(true);
             }

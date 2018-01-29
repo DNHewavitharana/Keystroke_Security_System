@@ -35,14 +35,6 @@ public class Security_System {
         System.out.println("delay_change " + change_delay + " "+ y);
         return false;
     }
-
-    static boolean checker(String user_name) {
-        if(!registered_usernames.contains(user_name)){
-            return true;
-        }else{
-            return false;
-        }
-    }
     
     public double press_time;
     public double release_time;
@@ -76,7 +68,6 @@ public class Security_System {
         press_time= System.currentTimeMillis();
         timers2.add(press_time-release_time);
         
-        //System.out.println("press Time "+timers2);
     }
     void declare(){
         timers1=new ArrayList();
@@ -97,26 +88,31 @@ public class Security_System {
         for (int j=2; j<timers1.size();j++){
             pressingtime+=(double) timers1.get(j);
         }
-        double parameter1=  pressingtime/(timers1.size()-3);
+        double parameter1=  pressingtime/(timers1.size()-2);
         System.out.println("Release Average = " + parameter1);
         
         for (int i=2; i<timers2.size();i++){
             changingtime+=(double) timers2.get(i);
         }
-        double parameter2 = changingtime/(timers2.size()-3);
+        double parameter2 = changingtime/(timers2.size()-2);
         System.out.println("Changing Average = "+ parameter2);
         
         ArrayList registering= new ArrayList();
 
         
         if (form=="register"){
-            registered_usernames.add(user_name);
             users.add(registering);
             timers1=new ArrayList();
             timers2=new ArrayList();
-            app.insert(user_name, parameter1,parameter2);
-            
-            return true;
+            ArrayList check_avalability = app.getUser(user_name);
+            if (check_avalability.isEmpty()){
+                app.insert(user_name, parameter1,parameter2);
+                return true;
+            }
+            else{
+                System.out.println("user avalable");
+                return false;
+            }
             
         }else if(form=="login"){
             ArrayList result = app.getUser(user_name);

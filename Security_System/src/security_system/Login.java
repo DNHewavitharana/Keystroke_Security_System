@@ -48,6 +48,8 @@ public class Login extends javax.swing.JFrame {
         setBounds(new java.awt.Rectangle(400, 200, 0, 0));
 
         text1.setColumns(20);
+        text1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        text1.setForeground(new java.awt.Color(0, 0, 0));
         text1.setLineWrap(true);
         text1.setRows(5);
         text1.setText("This is a security system for all users.");
