@@ -4,8 +4,6 @@
  * and open the template in the editor.
  */
 package security_system;
-import java.awt.Component;
-import javax.swing.*;
 
 /**
  *
